@@ -63,7 +63,7 @@ $(document).ready(function(){
 });
 </script>
 <?php
-include "upload_foto.php";
+include "upload_foto_profil.php";
 
 //jika tombol simpan diklik
 if (isset($_POST['simpan'])) {
