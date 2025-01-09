@@ -11,10 +11,10 @@ if (isset($_SESSION['username'])) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $username = $_POST['user'];
+  $username = $_POST['username'];
   
   //menggunakan fungsi enkripsi md5 supaya sama dengan password  yang tersimpan di database
-  $password = md5($_POST['pass']);
+  $password = md5($_POST['password']);
 
 	//prepared statement
   $stmt = $conn->prepare("SELECT username 
@@ -74,34 +74,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button type="submit" class="btn btn-primary btn-block">Login</button>
         </form>
     </div>
-
-    <?php
-    // Start session
-    session_start();
-
-    // Mock user data (replace with database later)
-    $admin_username = 'admin';
-    $admin_password = '123';
-
-    // Process login if form is submitted
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $username = $_POST['username'] ?? '';
-        $password = $_POST['password'] ?? '';
-
-        // Check credentials
-        if ($username === $admin_username && $password === $admin_password) {
-            // Login successful
-            $_SESSION['username'] = $username;
-            header("Location: index.php"); // Redirect to dashboard
-            exit();
-        } else {
-            // Login failed
-            echo "<script>alert('Invalid username or password');</script>";
-        }
-    }
-    ?>
 </body>
 </html>
 <?php
 }
 ?>
+
